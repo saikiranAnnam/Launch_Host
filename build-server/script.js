@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { exec } = require("child_process");
 const path = require("path");
 const fs = require("fs");
@@ -5,10 +6,10 @@ const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const mime = require("mime-types");
 
 const s3Client = new S3Client({
-  region: "eu-north-1",
+  region: process.env.S3_REGION,
   credentials: {
-    accessKeyId: "AKIAQ3EGQOCGRJFO42WS",
-    secretAccessKey: "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",
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_KEY,
   },
 });
 
